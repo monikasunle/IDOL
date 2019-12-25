@@ -1,0 +1,209 @@
+<!DOCUMENT html>
+<html>
+<head>
+	<title>❤肖战❤</title>
+	<meta charset="utf-8">
+	<style type="text/css">
+        *{
+        	padding: 0;
+        	margin: 0;
+        }
+        ul,li{
+			list-style: none;
+		}
+		.box{
+			width: 100%;
+			height: 100%;
+			position: relative;
+			overflow: hidden;
+		}
+        .slider{
+        	width: 100%;
+        	height: 8400px;
+        	position: absolute;
+        	overflow: hidden;
+        	top: -1200px;
+        }
+        img{
+        	width: 100%;
+        	height: 1200px;
+        	overflow: hidden;
+        }
+        .box>span{
+			display: block;
+			width: 100px;
+			height: 70px;
+			text-align: center;
+			line-height: 70px;
+			cursor: pointer;
+			color: #ccc;
+			left: 50%;
+			font-size: 120px;
+			position: absolute;
+			opacity: 1;
+		}
+		#up{
+			top: 50px;
+		}
+		#down{
+			bottom: 50px;
+		}
+		.nav{
+			position: absolute;
+			right: 0px;
+			top: 600px;
+		}
+		.nav>li{
+			width: 100px;
+			height: 50px;
+			background: #ccc;
+			cursor: pointer;
+			margin: 0 10px;
+			border-radius: 50%;
+			text-align: center;
+			line-height: 50px;
+			font-size: 12px;
+		}
+		.nav .active{
+			background: red;
+			color: white;
+		}
+    </style>
+<body>
+	<div class="box" id="box">
+		<div class="slider" id="slider">
+			<div class="slide" id="slide"><img src="xiaozhan_images/5.jpg" alt=""></div>
+			<div class="slide" id="slide"><img src="xiaozhan_images/1.jpg" alt=""></div>
+			<div class="slide" id="slide"><img src="xiaozhan_images/2.jpg" alt=""></div>
+			<div class="slide" id="slide"><img src="xiaozhan_images/3.jpg" alt=""></div>
+			<div class="slide" id="slide"><img src="xiaozhan_images/4.jpg" alt=""></div>
+			<div class="slide" id="slide"><img src="xiaozhan_images/5.jpg" alt=""></div>
+			<div class="slide" id="slide"><img src="xiaozhan_images/1.jpg" alt=""></div>
+		</div>
+		<span id="up"> ◎ </span>
+		<span id="down"> ◎ </span>
+	</div>
+	<script type="text/javascript">
+		function getStyle(obj, attr){
+			if(obj.currentStyle){
+				return obj.currentStyle[attr];
+			} else {
+				return getComputedStyle(obj, null)[attr];
+			}
+		}
+		function animate(obj,json,callback){
+			clearInterval(obj.timer);
+			obj.timer = setInterval(function(){
+				var isStop = true;
+				for(var attr in json){
+					var now = 0;
+					if(attr == 'opacity'){
+						now = parseInt(getStyle(obj,attr)*100);
+					}else{
+						now = parseInt(getStyle(obj,attr));
+					}
+					var speed = (json[attr] - now) / 8;
+					speed = speed>0?Math.ceil(speed):Math.floor(speed);
+					var cur = now + speed;
+					if(attr == 'opacity'){
+						obj.style[attr] = cur / 100;
+					}else{
+						obj.style[attr] = cur + 'px';
+					}
+					if(json[attr] !== cur){
+						isStop = false;
+					}
+				}
+				if(isStop){
+					clearInterval(obj.timer);
+					callback&&callback();
+				}
+			}, 30);
+		}
+
+		var box = document.getElementById("box");
+		var slider = document.getElementById("slider");
+		var up = document.getElementById("up");
+		var down = document.getElementById("down");
+		var slides = document.getElementById("slide").children;
+		var index = 1;
+		var isMoving = false;
+
+		function next(){
+			if(!isMoving){
+				isMoving = true;
+			    index++;
+			    animate(slider,{top: -1200*index},function(){
+				    if (index === 6){
+				        slider.style.top = "-1200px";
+				        index = 1;
+			        }
+			        isMoving = false;
+		        });
+			}
+		}
+
+		function prev(){
+			if(!isMoving){
+				isMoving = true;
+				index--;
+			    animate(slider,{top: -1200*index},function(){
+				    if (index === 0){
+				        slider.style.top = "-6000px";
+				        index = 5;
+			        }
+			        isMoving = false;
+		        });
+			}
+		}
+
+		var timer = setInterval(next,5000);
+
+		up.onclick = prev;
+		down.onclick = next;
+
+		//获取屏幕宽高
+        var windowWidth = window.screen.width;
+        var windowHeight = window.screen.height;
+ 
+        //创建雪花
+        function createSnow(){
+            var left = 0;
+            var top = 0;
+ 
+            //定义一个初始化随机数,使雪花在屏幕中
+            var left_random = Math.random() * windowWidth;
+            var top_random = Math.random()* windowHeight;
+            var div = document.createElement('div');
+            div.className = 'snow';
+            div.style.transform = 'scale('+(Math.random())+')'
+ 
+            document.body.appendChild(div);
+ 
+            //雪花飘落
+            setInterval(function () {
+ 
+                div.style.left = left_random + left +'px';
+                div.style.top = top_random + top +'px'
+                left += 0.5;
+                top += 1;
+ 
+                //如果雪花跑到屏幕外面了,让雪花重新返回屏幕顶部
+                if(left_random + left >= windowWidth){
+                    left_random = Math.random();
+                    left = 0;
+                }
+ 
+                if(top_random + top >= windowHeight){
+                    top_random = Math.random();
+                    top = 0;
+                }
+            },10)
+ 
+        }
+        for(var i = 0 ; i < 200 ; i++){
+            createSnow()
+        }
+	</script>
+</body>
+</html>

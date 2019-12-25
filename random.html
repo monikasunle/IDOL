@@ -1,0 +1,627 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>❤肖战❤</title>
+    <style>
+        body,html{
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            height: 100%;
+            background: #00b4a3;
+        }
+        .snow{
+            background: white;
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+        }
+        #div {
+            display: inline-flex;
+            flex-wrap: wrap;
+        }
+        .box{
+            width: 100%;
+            height: 1280px;
+        }
+        .slider{
+            display: block;
+            width: 220px;
+            height: 720px;
+            position: absolute;
+            /*overflow: hidden;*/
+            /*top: -120px;*/
+        }
+        p{
+            display: inline;
+            width: 100px;
+            height: 100px;
+            line-height: 120px;
+            text-align: center;
+            color: lightblue;
+            font-size: 18px;
+        }
+        img{
+            width: 120px;
+            height: 100px;
+            float: right;
+        }
+    </style>
+ 
+</head>
+<body>
+    <div class="box" id="box">
+        <div class="slider" id="slider">
+            <div class="slide1" id="slide1"><p>基本信息>></p><img src="xiaozhan_images/1.jpg" alt=""></div>
+            <div class="slide2" id="slide2"><p>演艺经历>></p><img src="xiaozhan_images/2.jpg" alt=""></div>
+            <div class="slide3" id="slide3"><p>主要作品>></p><img src="xiaozhan_images/3.jpg" alt=""></div>
+            <div class="slide4" id="slide4"><p>获奖记录>></p><img src="xiaozhan_images/4.jpg" alt=""></div>
+            <div class="slide5" id="slide5"><p>社会活动>></p><img src="xiaozhan_images/5.jpg" alt=""></div>
+            <div class="slide6" id="slide6"><p>基本信息>></p><img src="xiaozhan_images/1.jpg" alt=""></div>
+            <div class="slide7" id="slide7"><p>演艺经历>></p><img src="xiaozhan_images/2.jpg" alt=""></div>
+            <div class="slide8" id="slide8"><p>主要作品>></p><img src="xiaozhan_images/3.jpg" alt=""></div>
+            <div class="slide9" id="slide9"><p>获奖记录>></p><img src="xiaozhan_images/4.jpg" alt=""></div>
+            <div class="slide10" id="slide10"><p>社会活动>></p><img src="xiaozhan_images/5.jpg" alt=""></div>
+        </div>
+    </div>
+    <script>
+        function getStyle(obj, attr){
+            if(obj.currentStyle){
+                return obj.currentStyle[attr];
+            } else {
+                return getComputedStyle(obj, null)[attr];
+            }
+        }
+        function animate(obj,json,callback){
+            clearInterval(obj.timer);
+            obj.timer = setInterval(function(){
+                var isStop = true;
+                for(var attr in json){
+                    var now = 0;
+                    if(attr == 'opacity'){
+                        now = parseInt(getStyle(obj,attr)*100);
+                    }else{
+                        now = parseInt(getStyle(obj,attr));
+                    }
+                    var speed = (json[attr] - now) / 8;
+                    speed = speed>0?Math.ceil(speed):Math.floor(speed);
+                    var cur = now + speed;
+                    if(attr == 'opacity'){
+                        obj.style[attr] = cur / 100;
+                    }else{
+                        obj.style[attr] = cur + 'px';
+                    }
+                    if(json[attr] !== cur){
+                        isStop = false;
+                    }
+                }
+                if(isStop){
+                    clearInterval(obj.timer);
+                    callback&&callback();
+                }
+            }, 30);
+        }
+
+        var box = document.getElementById("box");
+        var slider = document.getElementById("slider");
+        var up = document.getElementById("up");
+        var down = document.getElementById("down");
+        var slide1 = document.getElementById("slide1");
+        var slide2 = document.getElementById("slide2");
+        var slide3 = document.getElementById("slide3");
+        var slide4 = document.getElementById("slide4");
+        var slide5 = document.getElementById("slide5");
+        var slide6 = document.getElementById("slide6");
+        var slide7 = document.getElementById("slide7");
+        var slide8 = document.getElementById("slide8");
+        var slide9 = document.getElementById("slide9");
+        var slide10 = document.getElementById("slide10");
+        var index = 1;
+        var isMoving = false;
+        var isBigger = false;
+
+        function next(){
+            if(!isMoving){
+                isMoving = true;
+                index++;
+                animate(slider,{top: -120*index},function(){
+                    if (index === 6){
+                        slider.style.top = "-120px";
+                        index = 1;
+                    }
+                    isMoving = false;
+                });
+            }
+        }
+
+        var timer = setInterval(next,5000);
+
+        function bigger(){
+            if(isBigger){
+                box.removeChild(bigger);
+            }
+            bigger = document.createElement("div");
+            bigger.className = "bigger";
+            bigger.style.float = "right";
+            box.appendChild(bigger);
+            imge = document.createElement("img");
+            imge.className = "imge";
+            imge.setAttribute("src","Christmas.png");
+            imge.style.width = '500px';
+            imge.style.height = '600px';
+            bigger.appendChild(imge);
+            merry = document.createElement("div");
+            merry.className = "merry";
+            bigger.appendChild(merry);
+            merry.innerHTML = "Merry <br> Christmas";
+            merry.style.float = "right";
+            merry.style.height = "200px";
+            merry.style.marginTop = "150px";
+            merry.style.fontSize = "80px";
+            merry.style.fontFamily = "Kristen ITC";
+            setInterval(function(){
+                function color(){
+                    var r = parseInt(255*Math.random());
+                    var g = parseInt(255*Math.random());
+                    var b = parseInt(255*Math.random());
+                    var a = Math.random();
+                    var rgba = "rgba(" + r + "," + g + "," + b + "," + a + ")";
+                    return rgba;
+                }
+                merry.style.color = color()},100);
+            isBigger = true;
+        }
+
+        window.onload = function(){
+            bigger();
+        }
+
+        slide1.onclick = function(){
+            if(isBigger){
+                box.removeChild(bigger);
+            }
+            bigger = document.createElement("div");
+            bigger.className = "bigger";
+            bigger.style.float = "right";
+            box.appendChild(bigger);
+            imge = document.createElement("img");
+            imge.className = "imge";
+            imge.setAttribute("src","xiaozhan_images/1.jpg");
+            imge.style.width = '698.4px';
+            imge.style.height = '582px';
+            bigger.appendChild(imge);
+            jibenxinxi = document.createElement("div");
+            jibenxinxi.className = "jibenxinxi";
+            i = 0;
+            time = 0;
+            str = '姓名：肖战 <br> 性别：男 <br> 出生日期：1991年10月05日 <br> 职业：歌手、演员 <br> 毕业院校：重庆工商大学 <br> 星座：天秤座 <br> 身高：183cm <br> 所属组合：X玖少年团 <br> 出生地：重庆';
+            function typing(){
+                if (i <= str.length) {
+                    jibenxinxi.innerHTML = str.slice(0, i++) + '❤';
+                    time = setTimeout(typing, 100);
+                }
+                else {
+                    jibenxinxi.innerHTML = str;
+                    clearTimeout(time);
+                }
+            }
+            typing();
+            jibenxinxi.style.float = "left";
+            jibenxinxi.style.fontSize = "20px";
+            jibenxinxi.style.marginRight = "20px";
+            jibenxinxi.style.lineHeight = '50px';
+            jibenxinxi.style.color = "lightblue";
+            bigger.appendChild(jibenxinxi);
+            isBigger = true;
+        }
+
+        slide2.onclick = function(){
+            if(isBigger){
+                box.removeChild(bigger);
+            }
+            bigger = document.createElement("div");
+            bigger.className = "bigger";
+            bigger.style.float = "right";
+            box.appendChild(bigger);
+            imge = document.createElement("img");
+            imge.className = "imge";
+            imge.setAttribute("src","xiaozhan_images/2.jpg");
+            imge.style.width = '698.4px';
+            imge.style.height = '582px';
+            bigger.appendChild(imge);
+            jibenxinxi = document.createElement("div");
+            jibenxinxi.className = "jibenxinxi";
+            i = 0;
+            time = 0;
+            str = '2015年 参加《燃烧吧少年》成为练习生 <br> 2015年 登上浙江卫视跨年演唱会 <br> 2016年 随X玖少年团推出同名数字专辑《X玖》 <br> 2016年 主演《超星星学园》 <br> 2016年 客串《相爱穿梭千年2：月光下的交换》 <br> 2016年 登上江苏卫视跨年演唱会 <br> 2017年 参演《斗破苍穹》 <br> 2017年 主演《狼殿下》 <br> 2017年 再度加盟江苏卫视跨年演唱会 <br> 2018年 发布第二章专辑《Keep Online》 <br> 2018年 参演《捉妖记2》并演唱主题曲 <br> 2018年 参演《哦！我的皇帝陛下》 <br> 2019年 主演《陈情令》 <br> 2019年 参演悬疑动作片《素人特工》 <br> 2019年 主演《余生 请多指教》 <br> 2019年 参演《诛仙I》并演唱主题曲 <br> 2019年 参与录制《中国梦之声 我们的歌》 <br> 2019年 参演《庆余年》并演唱片尾曲 <br> 2020年 受邀担任北京电视台春节联欢晚会代言人';
+            function typing(){
+                if (i <= str.length) {
+                    jibenxinxi.innerHTML = str.slice(0, i++) + '❤';
+                    time = setTimeout(typing, 100);
+                }
+                else {
+                    jibenxinxi.innerHTML = str;
+                    clearTimeout(time);
+                }
+            }
+            typing();
+            jibenxinxi.style.float = "left";
+            jibenxinxi.style.fontSize = "15px";
+            jibenxinxi.style.marginRight = "20px";
+            jibenxinxi.style.lineHeight = '30px';
+            jibenxinxi.style.color = "lightblue";
+            bigger.appendChild(jibenxinxi);
+            isBigger = true;
+        }
+
+        slide3.onclick = function(){
+            if(isBigger){
+                box.removeChild(bigger);
+            }
+            bigger = document.createElement("div");
+            bigger.className = "bigger";
+            bigger.style.float = "right";
+            box.appendChild(bigger);
+            imge = document.createElement("img");
+            imge.className = "imge";
+            imge.setAttribute("src","xiaozhan_images/3.jpg");
+            imge.style.width = '698.4px';
+            imge.style.height = '582px';
+            bigger.appendChild(imge);
+            jibenxinxi = document.createElement("div");
+            jibenxinxi.className = "jibenxinxi";
+            i = 0;
+            time = 0;
+            str = '庆余年 <br> 陈情令 <br> 斗罗大陆 <br> 余生，请多指教 <br> 斗破苍穹 <br> 哦！我的皇帝陛下 <br> 狼殿下 <br> 相爱穿梭千年2：月光下的交换 <br> 超星星学园';
+            function typing(){
+                if (i <= str.length) {
+                    jibenxinxi.innerHTML = str.slice(0, i++) + '❤';
+                    time = setTimeout(typing, 100);
+                }
+                else {
+                    jibenxinxi.innerHTML = str;
+                    clearTimeout(time);
+                }
+            }
+            typing();
+            jibenxinxi.style.float = "left";
+            jibenxinxi.style.fontSize = "20px";
+            jibenxinxi.style.marginRight = "20px";
+            jibenxinxi.style.lineHeight = '50px';
+            jibenxinxi.style.color = "lightblue";
+            bigger.appendChild(jibenxinxi);
+            isBigger = true;
+        }
+
+        slide4.onclick = function(){
+            if(isBigger){
+                box.removeChild(bigger);
+            }
+            bigger = document.createElement("div");
+            bigger.className = "bigger";
+            bigger.style.float = "right";
+            box.appendChild(bigger);
+            imge = document.createElement("img");
+            imge.className = "imge";
+            imge.setAttribute("src","xiaozhan_images/4.jpg");
+            imge.style.width = '698.4px';
+            imge.style.height = '582px';
+            bigger.appendChild(imge);
+            jibenxinxi = document.createElement("div");
+            jibenxinxi.className = "jibenxinxi";
+            i = 0;
+            time = 0;
+            str = ' 2019年 新浪影视综盛典 <br> 年度最具人气男演员 <br> 2019年 第26届华鼎奖 <br> 中国百强电视剧最佳新锐演员奖 <br> 2019年 腾讯娱乐白皮书年度盛典星推榜 <br> 年度电视剧男演员 <br> 2019年 爱奇艺尖叫之夜 <br> 年度飞跃人气演员 <br> 2019年 2019年搜狗IN全景·臻选礼 <br> 最IN潜力艺人 <br> 2019年 第三届中国银川互联网电影节 <br> 网络剧单元最佳男演员奖 <br> 2019年 第六届“中国电视好演员” <br> 网剧男演员 <br> 2016年  腾讯视频星光大赏 <br> 年度新锐电视剧男演员奖';
+            function typing(){
+                if (i <= str.length) {
+                    jibenxinxi.innerHTML = str.slice(0, i++) + '❤';
+                    time = setTimeout(typing, 100);
+                }
+                else {
+                    jibenxinxi.innerHTML = str;
+                    clearTimeout(time);
+                }
+            }
+            typing();
+            jibenxinxi.style.float = "left";
+            jibenxinxi.style.fontSize = "15px";
+            jibenxinxi.style.marginRight = "20px";
+            jibenxinxi.style.lineHeight = '30px';
+            jibenxinxi.style.color = "lightblue";
+
+            bigger.appendChild(jibenxinxi);
+            isBigger = true;
+        }
+
+        slide5.onclick = function(){
+            if(isBigger){
+                box.removeChild(bigger);
+            }
+            bigger = document.createElement("div");
+            bigger.className = "bigger";
+            bigger.style.float = "right";
+            box.appendChild(bigger);
+            imge = document.createElement("img");
+            imge.className = "imge";
+            imge.setAttribute("src","xiaozhan_images/5.jpg");
+            imge.style.width = '698.4px';
+            imge.style.height = '582px';
+            bigger.appendChild(imge);
+            jibenxinxi = document.createElement("div");
+            jibenxinxi.className = "jibenxinxi";
+            i = 0;
+            time = 0;
+            str = '2019年3月26日 <br> 由慈传媒主办、《中国慈善家》杂志、群瑞 <br> 文化等多家机构联合主办的“2019慈善名人 <br> 盛典”举行，肖战获得“星慈善·乐活能量”奖。 <br> 5月 <br> 新浪新闻app与中国基金扶贫会共同开启 <br> 书路计划”活动；肖战以“爱心倡导者” <br> 的身份助力教育扶贫，为贫困学生募集 <br> 电子阅读器和电子书资源，让书籍成为 <br> 孩子认识世界的眼睛。 <br> 11月16日 <br> 参加“芭莎慈善夜”，并演唱歌曲《满足》 <br> 为慈善助力。 <br> 12月13日 <br> 在古田会议胜利召开90周年来临之际，肖战 <br> 随中央广播电视总台“心连心”艺术团前往 <br> 上杭县古田镇慰问演出，并在现场与魏允熙 <br> 演唱《我们都是追梦人》';
+            function typing(){
+                if (i <= str.length) {
+                    jibenxinxi.innerHTML = str.slice(0, i++) + '❤';
+                    time = setTimeout(typing, 100);
+                }
+                else {
+                    jibenxinxi.innerHTML = str;
+                    clearTimeout(time);
+                }
+            }
+            typing();
+            jibenxinxi.style.float = "left";
+            jibenxinxi.style.fontSize = "15px";
+            jibenxinxi.style.marginRight = "20px";
+            jibenxinxi.style.lineHeight = '30px';
+            jibenxinxi.style.color = "lightblue";
+            bigger.appendChild(jibenxinxi);
+            isBigger = true;
+        }
+
+        slide6.onclick = function(){
+            if(isBigger){
+                box.removeChild(bigger);
+            }
+            bigger = document.createElement("div");
+            bigger.className = "bigger";
+            bigger.style.float = "right";
+            box.appendChild(bigger);
+            imge = document.createElement("img");
+            imge.className = "imge";
+            imge.setAttribute("src","xiaozhan_images/1.jpg");
+            imge.style.width = '698.4px';
+            imge.style.height = '582px';
+            bigger.appendChild(imge);
+            jibenxinxi = document.createElement("div");
+            jibenxinxi.className = "jibenxinxi";
+            i = 0;
+            time = 0;
+            str = '姓名：肖战 <br> 性别：男 <br> 出生日期：1991年10月05日 <br> 职业：歌手、演员 <br> 毕业院校：重庆工商大学 <br> 星座：天秤座 <br> 身高：183cm <br> 所属组合：X玖少年团 <br> 出生地：重庆';
+            function typing(){
+                if (i <= str.length) {
+                    jibenxinxi.innerHTML = str.slice(0, i++) + '❤';
+                    time = setTimeout(typing, 100);
+                }
+                else {
+                    jibenxinxi.innerHTML = str;
+                    clearTimeout(time);
+                }
+            }
+            typing();
+            jibenxinxi.style.float = "left";
+            jibenxinxi.style.fontSize = "20px";
+            jibenxinxi.style.marginRight = "20px";
+            jibenxinxi.style.lineHeight = '50px';
+            jibenxinxi.style.color = "lightblue";
+            bigger.appendChild(jibenxinxi);
+            isBigger = true;
+        }
+
+        slide7.onclick = function(){
+            if(isBigger){
+                box.removeChild(bigger);
+            }
+            bigger = document.createElement("div");
+            bigger.className = "bigger";
+            bigger.style.float = "right";
+            box.appendChild(bigger);
+            imge = document.createElement("img");
+            imge.className = "imge";
+            imge.setAttribute("src","xiaozhan_images/2.jpg");
+            imge.style.width = '698.4px';
+            imge.style.height = '582px';
+            bigger.appendChild(imge);
+            jibenxinxi = document.createElement("div");
+            jibenxinxi.className = "jibenxinxi";
+            i = 0;
+            time = 0;
+            str = '2015年 参加《燃烧吧少年》成为练习生 <br> 2015年 登上浙江卫视跨年演唱会 <br> 2016年 随X玖少年团推出同名数字专辑《X玖》 <br> 2016年 主演《超星星学园》 <br> 2016年 客串《相爱穿梭千年2：月光下的交换》 <br> 2016年 登上江苏卫视跨年演唱会 <br> 2017年 参演《斗破苍穹》 <br> 2017年 主演《狼殿下》 <br> 2017年 再度加盟江苏卫视跨年演唱会 <br> 2018年 发布第二章专辑《Keep Online》 <br> 2018年 参演《捉妖记2》并演唱主题曲 <br> 2018年 参演《哦！我的皇帝陛下》 <br> 2019年 主演《陈情令》 <br> 2019年 参演悬疑动作片《素人特工》 <br> 2019年 主演《余生 请多指教》 <br> 2019年 参演《诛仙I》并演唱主题曲 <br> 2019年 参与录制《中国梦之声 我们的歌》 <br> 2019年 参演《庆余年》并演唱片尾曲 <br> 2020年 受邀担任北京电视台春节联欢晚会代言人';
+            function typing(){
+                if (i <= str.length) {
+                    jibenxinxi.innerHTML = str.slice(0, i++) + '❤';
+                    time = setTimeout(typing, 100);
+                }
+                else {
+                    jibenxinxi.innerHTML = str;
+                    clearTimeout(time);
+                }
+            }
+            typing();
+            jibenxinxi.style.float = "left";
+            jibenxinxi.style.fontSize = "15px";
+            jibenxinxi.style.marginRight = "20px";
+            jibenxinxi.style.lineHeight = '30px';
+            jibenxinxi.style.color = "lightblue";
+            bigger.appendChild(jibenxinxi);
+            isBigger = true;
+        }
+
+        slide8.onclick = function(){
+            if(isBigger){
+                box.removeChild(bigger);
+            }
+            bigger = document.createElement("div");
+            bigger.className = "bigger";
+            bigger.style.float = "right";
+            box.appendChild(bigger);
+            imge = document.createElement("img");
+            imge.className = "imge";
+            imge.setAttribute("src","xiaozhan_images/3.jpg");
+            imge.style.width = '698.4px';
+            imge.style.height = '582px';
+            bigger.appendChild(imge);
+            jibenxinxi = document.createElement("div");
+            jibenxinxi.className = "jibenxinxi";
+            i = 0;
+            time = 0;
+            str = '庆余年 <br> 陈情令 <br> 斗罗大陆 <br> 余生，请多指教 <br> 斗破苍穹 <br> 哦！我的皇帝陛下 <br> 狼殿下 <br> 相爱穿梭千年2：月光下的交换 <br> 超星星学园';
+            function typing(){
+                if (i <= str.length) {
+                    jibenxinxi.innerHTML = str.slice(0, i++) + '❤';
+                    time = setTimeout(typing, 100);
+                }
+                else {
+                    jibenxinxi.innerHTML = str;
+                    clearTimeout(time);
+                }
+            }
+            typing();
+            jibenxinxi.style.float = "left";
+            jibenxinxi.style.fontSize = "20px";
+            jibenxinxi.style.marginRight = "20px";
+            jibenxinxi.style.lineHeight = '50px';
+            jibenxinxi.style.color = "lightblue";
+            bigger.appendChild(jibenxinxi);
+            isBigger = true;
+        }
+
+        slide9.onclick = function(){
+            if(isBigger){
+                box.removeChild(bigger);
+            }
+            bigger = document.createElement("div");
+            bigger.className = "bigger";
+            bigger.style.float = "right";
+            box.appendChild(bigger);
+            imge = document.createElement("img");
+            imge.className = "imge";
+            imge.setAttribute("src","xiaozhan_images/4.jpg");
+            imge.style.width = '698.4px';
+            imge.style.height = '582px';
+            bigger.appendChild(imge);
+            jibenxinxi = document.createElement("div");
+            jibenxinxi.className = "jibenxinxi";
+            i = 0;
+            time = 0;
+            str = ' 2019年 新浪影视综盛典 <br> 年度最具人气男演员 <br> 2019年 第26届华鼎奖 <br> 中国百强电视剧最佳新锐演员奖 <br> 2019年 腾讯娱乐白皮书年度盛典星推榜 <br> 年度电视剧男演员 <br> 2019年 爱奇艺尖叫之夜 <br> 年度飞跃人气演员 <br> 2019年 2019年搜狗IN全景·臻选礼 <br> 最IN潜力艺人 <br> 2019年 第三届中国银川互联网电影节 <br> 网络剧单元最佳男演员奖 <br> 2019年 第六届“中国电视好演员” <br> 网剧男演员 <br> 2016年  腾讯视频星光大赏 <br> 年度新锐电视剧男演员奖';
+            function typing(){
+                if (i <= str.length) {
+                    jibenxinxi.innerHTML = str.slice(0, i++) + '❤';
+                    time = setTimeout(typing, 100);
+                }
+                else {
+                    jibenxinxi.innerHTML = str;
+                    clearTimeout(time);
+                }
+            }
+            typing();
+            jibenxinxi.style.float = "left";
+            jibenxinxi.style.fontSize = "15px";
+            jibenxinxi.style.marginRight = "20px";
+            jibenxinxi.style.lineHeight = '30px';
+            jibenxinxi.style.color = "lightblue";
+
+            bigger.appendChild(jibenxinxi);
+            isBigger = true;
+        }
+
+        slide10.onclick = function(){
+            if(isBigger){
+                box.removeChild(bigger);
+            }
+            bigger = document.createElement("div");
+            bigger.className = "bigger";
+            bigger.style.float = "right";
+            box.appendChild(bigger);
+            imge = document.createElement("img");
+            imge.className = "imge";
+            imge.setAttribute("src","xiaozhan_images/5.jpg");
+            imge.style.width = '698.4px';
+            imge.style.height = '582px';
+            bigger.appendChild(imge);
+            jibenxinxi = document.createElement("div");
+            jibenxinxi.className = "jibenxinxi";
+            i = 0;
+            time = 0;
+            str = '2019年3月26日 <br> 由慈传媒主办、《中国慈善家》杂志、群瑞 <br> 文化等多家机构联合主办的“2019慈善名人 <br> 盛典”举行，肖战获得“星慈善·乐活能量”奖。 <br> 5月 <br> 新浪新闻app与中国基金扶贫会共同开启 <br> 书路计划”活动；肖战以“爱心倡导者” <br> 的身份助力教育扶贫，为贫困学生募集 <br> 电子阅读器和电子书资源，让书籍成为 <br> 孩子认识世界的眼睛。 <br> 11月16日 <br> 参加“芭莎慈善夜”，并演唱歌曲《满足》 <br> 为慈善助力。 <br> 12月13日 <br> 在古田会议胜利召开90周年来临之际，肖战 <br> 随中央广播电视总台“心连心”艺术团前往 <br> 上杭县古田镇慰问演出，并在现场与魏允熙 <br> 演唱《我们都是追梦人》';
+            function typing(){
+                if (i <= str.length) {
+                    jibenxinxi.innerHTML = str.slice(0, i++) + '❤';
+                    time = setTimeout(typing, 100);
+                }
+                else {
+                    jibenxinxi.innerHTML = str;
+                    clearTimeout(time);
+                }
+            }
+            typing();
+            jibenxinxi.style.float = "left";
+            jibenxinxi.style.fontSize = "15px";
+            jibenxinxi.style.marginRight = "20px";
+            jibenxinxi.style.lineHeight = '30px';
+            jibenxinxi.style.color = "lightblue";
+            bigger.appendChild(jibenxinxi);
+            isBigger = true;
+        }
+
+        slider.onmouseover = function(){
+            clearInterval(timer);
+        }
+
+        slider.onmouseout = function(){
+            timer = setInterval(next, 5000);
+        }
+
+        //获取屏幕宽高
+        var windowWidth = window.screen.availWidth;
+        var windowHeight = window.screen.availHeight;
+
+        console.log(windowWidth);
+        //创建雪花
+        function createSnow(){
+            var left = 0;
+            var top = 0;
+ 
+            //定义一个初始化随机数,使雪花在屏幕中
+            var left_random = Math.random() * windowWidth;
+            var top_random = Math.random()* windowHeight;
+            var div = document.createElement('div');
+            div.className = 'snow';
+            div.style.transform = 'scale('+(Math.random())+')'
+ 
+            document.body.appendChild(div);
+ 
+            //雪花飘落
+            setInterval(function () {
+ 
+                div.style.left = left_random + left +'px';
+                div.style.top = top_random + top +'px'
+                left += 0.5;
+                top += 1;
+ 
+                //如果雪花跑到屏幕外面了,让雪花重新返回屏幕顶部
+                if(left_random + left >= windowWidth){
+                    left_random = Math.random();
+                    left = 0;
+                }
+ 
+                if(top_random + top >= windowHeight){
+                    top_random = Math.random();
+                    top = 0;
+                }
+            },10)
+ 
+        }
+        for(var i = 0 ; i < 200 ; i++){
+            createSnow()
+        }
+
+    </script>
+</body>
+</html>
