@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+	<html>
+	<title></title>
+	<meta charset="utf-8">
+	<head>
+		<script type="text/javascript">
+			
+		</script>
+		<style>
+		*{
+			padding: 0;
+			margin: 0;
+		}
+			html{
+				min-height:100%;
+			}
+			
+			body{
+
+				
+				/*动态渐变*/
+				-webkit-animation: colorchange 60s infinite;
+				animation: colorchange 60s infinite;
+			}
+			@-webkit-keyframes colorchange{
+				0%{background:#8deee5;}
+				15%{background:#3aaec7;}
+				30%{background:#2da0b5;}
+				45%{background:#00b4a3;}
+				55%{background:#3aaec7;}
+				65%{background:#8deee5;}
+				80%{background:#3aaec7;}
+				90%{background:#2da0b5;}
+				100%{background:#8deee5;}
+			}
+			@keyframes colorchange{
+				0%{background:#8deee5;}
+				15%{background:#3aaec7;}
+				30%{background:#2da0b5;}
+				45%{background:#00b4a3;}
+				55%{background:#3aaec7;}
+				65%{background:#8deee5;}
+				80%{background:#3aaec7;}
+				90%{background:#2da0b5;}
+				100%{background:#8deee5;}
+			}
+			.circle{
+				width: 400px;
+				height: 400px;
+				background-color: #00b4a3;
+				border-radius:50%;
+				position: absolute;
+				left: 550px;
+
+			}
+			.logo{
+				position: absolute;
+				top: 120px;
+				left: 90px;
+			}
+			#star{
+				display: inline-block;
+				position: absolute;
+				top: 400px;
+				left: 200px;
+			}
+			.star1{
+				position: absolute;
+				top: 150px;
+				left: 600px;
+			}
+			.star2{
+				position: absolute;
+				top: 800px;
+				left: 900px;
+			}
+			.photo1{
+				width: 150px;
+				height: 150px;
+				background-color: #34b6e6;
+				border-radius:50%;
+				position: absolute;
+				top: 470px;
+				left: 165px;
+			}
+			.photo2{
+				width: 150px;
+				height: 150px;
+				background-color: #34b6e6;
+				border-radius:50%;
+				position: absolute;
+				top: 650px;
+				right: 125px;
+			}
+			.photo3{
+				width: 150px;
+				height: 150px;
+				background-color: #34b6e6;
+				border-radius:50%;
+				position: absolute;
+				top: 830px;
+				left: 165px;
+			}
+			.photo4{
+				width: 150px;
+				height: 150px;
+				background-color: #34b6e6;
+				border-radius:50%;
+				position: absolute;
+				top: 1010px;
+				right: 125px;
+			}
+			.xz{
+				position: absolute;
+				top: 0px;
+				left: 0px;
+			}
+			.jx{
+				position: absolute;
+				top: 0px;
+				left: 0px;
+			}
+			.wyb{
+				position: absolute;
+				top: 0px;
+				left: 0px;
+			}
+			.yy{
+				position: absolute;
+				top: 0px;
+				left: 0px;
+			}
+
+			/*鼠标悬停*/
+			
+			/*.w div{
+				display: none;
+			}*/
+			/*.w:hover div{
+				display: initial;
+			}*/
+			.wordbox{
+				width: 600px;
+				height: 300px;
+				top: 10px;
+				left: 200px;
+				position: absolute;
+				display: none;
+			}
+			.wordbox1{
+				width: 600px;
+				height: 300px;
+				top: 10px;
+				right: -30px;
+				position: absolute;
+				display: none;
+			}
+			.wordbox2{
+				width: 600px;
+				height: 300px;
+				top: 10px;
+				left: 200px;
+				position: absolute;
+				display: none;
+			}
+			.wordbox3{
+				width: 600px;
+				height: 300px;
+				top: 10px;
+				right: -30px;
+				position: absolute;
+				display: none;
+			}
+			
+			.endbox{
+				width: 100%;
+				height: 300px;
+				/*静态渐变*/
+				/*/*从左到右渐变*/
+				background: webkit-linear-gradient(left,#8deee5,#3aaec7,#00b4a3);
+				/*在右边终止*/
+				background: -o-linear-gradient(right,#8deee5,#3aaec7,#00b4a3);
+				/*往右*/
+				background: linear-gradient(to right,#8deee5,#3aaec7,#00b4a3);
+
+				top: 1300px;
+				left: 0px;
+				position: absolute;
+			}
+
+			.homepage{
+				position: absolute;
+				top: 180px;
+				left: 1100px;
+			}
+			.homepage a{
+				text-decoration: none;
+				color: lightblue;
+				font-family: "华文彩云";
+				font-size: 50px;
+			}
+			.txt{
+				text-decoration: none;
+				color: white;
+				font-family: "楷体";
+				font-size: 20px;
+				position: absolute;
+				top: 80px;
+				left: 280px;
+				line-height: 30px;
+			}
+			.wordbox a{
+				text-decoration: none;
+				color: white;
+				font-family: "华文彩云";
+				font-size: 25px;
+			}
+			.wordbox1 a{
+				text-decoration: none;
+				color: white;
+				font-family: "华文彩云";
+				font-size: 25px;
+			}
+			.wordbox2 a{
+				text-decoration: none;
+				color: white;
+				font-family: "华文彩云";
+				font-size: 25px;
+			}
+			.wordbox3 a{
+				text-decoration: none;
+				color: white;
+				font-family: "华文彩云";
+				font-size: 25px;
+			}
+			.name{
+				color: black;
+				font-family: "黑体";
+				font-size: 40px;
+				font-weight: 100;
+			}
+			.search a{
+				text-decoration: none;
+				color: white;
+				font-family: "华文琥珀";
+				font-size: 25px;
+				position: absolute;
+				top: 1260px;
+				left: 1170px;
+			}
+			.huodonghui{
+				color: black;
+				font-family: "华文琥珀";
+				font-size: 55px;
+				position: absolute;
+				top: 270px;
+				left: 125px;
+			}
+			.return1{
+				position: absolute;
+				top: 0px;
+				left: -60px;
+			}
+			.return1 a{
+				text-decoration: none;
+				color: #00b4a3;
+				font-family: "华文琥珀";
+				font-size: 25px;
+				position: absolute;
+				top: 50px;
+				left: 90px;
+			}
+
+		</style>
+		
+	</head>
+	<body>
+		<!-- 背景 -->
+		<!-- <div id="background"style="position:absolute;z-index:-1;width:100%;height:100%;top:0px;left:0px">
+			<img src="C:\Users\Lenovo-X\Desktop\work\iamge\bg.jpg" width="100%" heigth="100%"/>
+			
+		</div>
+		<div id="content">
+			<div style="border:1px solid #000">
+				
+			</div>
+		</div> -->
+		<div class="circle">
+			<div class="logo">
+				<img src="C:\Users\Lenovo-X\Desktop\work\iamge\logo2.jpg">
+			</div>
+			<div class="huodonghui">
+				<div>活动汇</div>
+			</div>
+			<div class="return1">
+				<img src="C:\Users\Lenovo-X\Desktop\work\iamge\square.png" width="230" height="200">
+				<div><a href="index.html">首页</div>
+			</div>
+		</div>
+		<div id="star">
+			<img src="C:\Users\Lenovo-X\Desktop\work\iamge\star.png" width="300" height="300">
+		</div>
+		<div class="star1">
+			<img src="C:\Users\Lenovo-X\Desktop\work\iamge\star.png" width="200" height="200">
+		</div>
+		<div class="star2">
+			<img src="C:\Users\Lenovo-X\Desktop\work\iamge\star.png" width="200" height="200">
+		</div>
+
+		<div class="photo1">
+			<div class="xz">
+				<img src="C:\Users\Lenovo-X\Desktop\work\iamge\xz.png" width="160" height="160">
+				<div class="wordbox">
+					<div class="name">肖战</div><br/>
+				    <div><a href="#">0元启动肖战1005生日开屏应援</div>
+				    <div>发起者：爱豆华语社区71147人参加</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="photo2">
+			<div class="jx">
+				<img src="C:\Users\Lenovo-X\Desktop\work\iamge\jx.png" width="160" height="160">
+				<div class="wordbox1">
+					<div class="name">景向谁依</div><br/>
+				    <div><a href="#">2019.12.7上海猫耳声优祭应援</div>
+				    <div><a href="#">2020.1.1广州萤火虫动漫展览会应援</div>
+				</div>
+			</div>
+		</div>
+		<div class="photo3">
+			<div class="wyb">
+				<img src="C:\Users\Lenovo-X\Desktop\work\iamge\wyb.png" width="160" height="160">
+				<div class="wordbox2">
+					<div class="name">王一博</div><br/>
+				    <div><a href="#">2019.9.15出道五周年纪念日开屏应援</div>
+				</div>
+			</div>
+		</div>
+		<div class="photo4">
+			<div class="yy">
+				<img src="C:\Users\Lenovo-X\Desktop\work\iamge\yy.png" width="160" height="160">
+				<div class="wordbox3">
+					<div class="name">妖扬</div><br/>
+				    <div><a href="#">2020.1.1南京金陵国风纪应援</div>
+				    <div><a href="#">2020.1.18广州初物语应援</div>
+				</div>
+			</div>
+		</div>
+		<div class="search">
+			<a href="#">查看更多...</a>
+		</div>
+		
+		<div class="endbox">
+			<div class="txt">月亮洒落细碎星光<br/>银河藏匿人间理想<br/>我们沿途寻找<br/>Ta们是夜空闪耀的光芒</div>
+			<div class="homepage">
+				<a href="index.html">idol>>><br/>entrance</a>
+			</div>
+		</div>
+
+
+		<script type="text/javascript">
+			var star = document.getElementById("star");
+			var tag = true;
+			var clear = setInterval(function(){
+				if(tag){
+					star.style.display = "none";
+				}
+				else
+					star.style.display = "inline-block";
+				tag = !tag;
+			}, 500);
+			var star1 = document.getElementsByClassName("star1")[0];
+			var tag1 = false;
+			var clear = setInterval(function(){
+				if(tag1){
+					star1.style.display = "none";
+				}
+				else
+					star1.style.display = "inline-block";
+				tag1 = !tag1;
+			}, 1000);
+			var star2 = document.getElementsByClassName("star2")[0];
+			var tag2 = false;
+			var clear = setInterval(function(){
+				if(tag2){
+					star2.style.display = "none";
+				}
+				else
+					star2.style.display = "inline-block";
+				tag2 = !tag2;
+			}, 800);
+
+			// 鼠标悬停  未
+			var image = document.getElementsByClassName("xz")[0];
+			image.onmouseover = function(){
+				var div = document.getElementsByClassName("wordbox")[0];
+				div.style.display = "inline-block";
+			}
+
+			// 鼠标悬停  来
+			var image1 = document.getElementsByClassName("jx")[0];
+			image1.onmouseover = function(){
+				var div = document.getElementsByClassName("wordbox1")[0];
+				div.style.display = "inline-block";
+			}
+
+			// 鼠标悬停  可
+			var image2 = document.getElementsByClassName("wyb")[0];
+			image2.onmouseover = function(){
+				var div = document.getElementsByClassName("wordbox2")[0];
+				div.style.display = "inline-block";
+			}
+
+			// 鼠标悬停  期
+			var image3 = document.getElementsByClassName("yy")[0];
+			image3.onmouseover = function(){
+				var div = document.getElementsByClassName("wordbox3")[0];
+				div.style.display = "inline-block";
+			}
+		</script>
+	</body>
+	</html>
