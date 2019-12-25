@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>IDOL</title>
+	<meta charset="utf-8">
+	<link rel="stylesheet" type="text/css" href="li.css"/>
+	<script src="animate.js"></script>
+	
+</head>
+<body>
+<div id="main" class="main">
+	<!--  -->
+	<!--  -->
+	<!--  -->
+
+	<!-- 头部 -->
+	<div class="header-index headerNavNone" style="display: block;">
+		<div class="topBg"></div>
+		<div class="opacityBox">
+			<div class="headerLogoBox head_left">
+				<div class="logo">
+					<img src="imgs/logo0_.jpg" alt >
+				</div>
+			</div>
+			<div id="nav" class="nav">
+			<ul class="navList right" >
+				<li>
+					<a href="web08_2.html" target = "_blank" class="navl">
+						<div>注册</div>
+					</a>
+				</li>
+
+				<li>
+					<a href="web08_1.html" target = "_blank" class="navl">
+						<div>登录</div>
+					</a>
+				</li>
+				<li>
+					<a href="#" class="navl">
+						<div>排行榜</div>
+					</a>
+				</li>
+				<li>
+					<a href="idol.html" class="navl">
+						<div>活动汇</div>
+					</a>
+				</li>
+				<li>
+					<a href="#" class="navl">
+						<div>首页</div>
+					</a>
+				</li>
+			</ul>
+			<span id="line"></span>
+			</div>
+		</div>
+	</div>
+
+    <!-- 导航栏滑动条跟随 -->
+	<script type="text/javascript">
+		var navs = document.getElementById('nav').getElementsByTagName('a');
+		var line = document.getElementById('line');
+		//计时器
+		var timer = null;
+
+		//位置初始化
+		line.style.left = 0;
+
+		for(var i = 0 ; i < navs.length; i++ ){
+			navs[i].onmouseover = function(){
+				if(timer){
+					clearTimeout(timer);
+				};
+				var startPos = parseInt(line.style.left);
+				var targetPos = this.offsetLeft ;
+				move(startPos,targetPos);
+			}
+		}
+
+		function move(start,end){
+			//缓冲运动的核心
+			var step = (end -start)/10;
+			//根据起点与终点的不同进行取整
+			if(step>0){
+				step = Math.ceil(step);
+			}else{
+				step = Math.floor(step);
+			}
+			start = start + step;
+			line.style.left = start + 'px';
+			if (start == end) {
+				clearTimeout(timer);
+			}else{
+				timer = setTimeout(function(){
+					move(start,end);
+				},16)
+			}
+		}
+	</script>
+
+<!--   内容1   -->
+	<div class="content">
+		<div class="lb">
+			<!-- 轮播图的div -->
+			<div class="box" id="box">
+				<div class="slider" id="slider">
+					<div class="slide"><img src="imgs/5lkl.png" alt=""></div>
+					<div class="slide"><img src="imgs/1tt.png" alt=""></div> 
+					<div class="slide"><img src="imgs/2zyl.png" alt=""></div>
+					<div class="slide"><img src="imgs/3wje.png" alt=""></div>
+					<div class="slide"><img src="imgs/4red.png" alt=""></div>
+					<div class="slide"><img src="imgs/5lkl.png" alt=""></div>
+					<div class="slide"><img src="imgs/1tt.png" alt=""></div>
+				</div>
+				<span id="left"><</span>
+				<span id="right">></span>
+				<span id="info">2019今日头条年度盛典</span>
+				<div class="lb_nav" id="lb_nav">
+					<span class="active"></span>
+					<span></span>
+					<span></span>
+					<span></span>
+					<span></span>
+				</div>
+			</div>
+
+		</div>
+		<div class="index_con">
+			<h1 class="index_h1">
+				<span class="pink">NEWS<span><strong class="das">大事件</strong><span>
+			</h1>
+				<div class="index_con_news">                
+					<div class="news">
+						<div class="news-it">
+							<h2 class="news-tit"><span class="news-type">明星</span><a href="#" >“2019 SBS歌谣大战”Wendy&玄胜熙&银河&颂乐→Irene&车银优共同带来特别舞台</a></h2>	
+						</div>
+						<p class="news-if">23日，据多家媒体报道，在将于25日举行的“2019 SBS歌谣大战”中，Red Velvet成员Wendy-OH MY GIRL成员玄胜熙-GFriend成员银河以及MAMAMO</p>
+						<div class="news-it">
+							<h2 class="news-tit"><span class="news-type">明星</span><a href="#" >朴宝剑&姜涩琪当选可口可乐2020年新年活动模特</a></h2>
+						</div>
+						<p class="news-if">据多家媒体23日报道，可口可乐公司选定了朴宝剑&姜涩琪担任2020年新年活动的模特。演员朴宝剑和人气女团Red Velvet的成员姜涩琪将一起开始支持日常中微小却珍贵的小幸</p>
+						<div class="news-it">
+							<h2 class="news-tit"><span class="news-type">明星</span><a href="#" >王一博新歌《无感》发布首张概念宣传照</a></h2>
+						</div>
+						<p class="news-if">来了来了来了！时隔一年的新歌终于来了！今日中午王一博更新绿洲组合官博更新微博同步公开新歌《无感》首张概念宣传照！并告知《无感》将会于12月30人中午12.00准时上线！岁末将至，惊</p>
+					</div>
+			</div>
+		</div>
+	</div>
+	<div class="banner-category">
+		<div class="banner-content">
+			<section class="md md2">
+				<div class="md-wr">
+					<h2 class="tit-md">热门明星<span class="ico-md"></span></h2>
+					<div class="star-pt">
+						<div class="star-wr">
+							<ul class="lis-star">
+								<li class="star-it">
+									<a class="star-ln" href="random.html" target = "_blank">
+										<div class="star-pic-wr"><img src="imgs/ban1.jpg" alt="肖战" class="star-pic"/></div>
+										<p class="star-name">肖战</p>
+									</a>
+								</li>
+								<li class="star-it">
+									<a class="star-ln" href="#">
+										<div class="star-pic-wr"><img src="imgs/ban2.jpg" alt="王一博" class="star-pic"/></div>
+										<p class="star-name">王一博</p>
+									</a>
+								</li>
+								<li class="star-it">
+									<a class="star-ln" href="#">
+										<div class="star-pic-wr"><img src="imgs/ban3.jpg" alt="易烊千玺" class="star-pic"/></div>
+										<p class="star-name">易烊千玺</p>
+									</a>
+								</li>
+								<li class="star-it">
+									<a class="star-ln" href="#">
+										<div class="star-pic-wr"><img src="imgs/ban4.jpg" alt="EXO" class="star-pic"/></div>
+										<p class="star-name">EXO</p>
+									</a>
+								</li>
+								<li class="star-it">
+									<a class="star-ln" href="#">
+										<div class="star-pic-wr"><img src="imgs/ban5.jpg" alt="朱一龙" class="star-pic"/></div>
+										<p class="star-name">朱一龙</p>
+									</a>
+								</li>
+								<li class="star-it">
+									<a class="star-ln" href="#">
+										<div class="star-pic-wr"><img src="imgs/ban6.jpg" alt="蔡徐坤" class="star-pic"/></div>
+										<p class="star-name">蔡徐坤</p>
+									</a>
+								</li>
+								<li class="star-it">
+									<a class="star-ln" href="#">
+										<div class="star-pic-wr"><img src="imgs/ban7.jpg" alt="防弹少年团" class="star-pic"/></div>
+										<p class="star-name">防弹少年团</p>
+									</a>
+								</li>
+								<li class="star-it">
+									<a class="star-ln" href="#">
+										<div class="star-pic-wr"><img src="imgs/ban8.jpg" alt="李现" class="star-pic"/></div>
+										<p class="star-name">李现</p>
+									</a>
+								</li>
+
+							</ul>
+						</div>
+						<a class="star-more" href="#"><span class="ico-star-more"></span><p class="more-if">更多</p></a>
+					</div>
+				</div>
+			</section>
+		</div>
+	</div>
+
+	    <!-- 排行榜 -->
+<!-- 	<div class="rankBox">
+		<div class="index_hd">排行榜</div>
+		<div class="mod_toplist">
+			<ul class="toplist_list">
+				<li class="toplist_item item1">
+					<div></div>
+				</li>
+				<div class="toplist_item item2"></div>
+				<div class="toplist_item item3"></div>
+				<div class="toplist_item item4"></div>
+				<div class="toplist_item item5"></div>
+			</ul>
+		</div>
+	</div>
+ -->
+
+<!-- 	回到顶端   -->
+	<div class="back-top">
+		<div class="top"></div>
+	</div>
+
+<!-- 	底部  -->
+	<div class="bottom">
+		<div class="footer">
+			<div class="f1">
+				<div class="follow-pt">
+					<ul class="lis lis-follow">
+						<li class="follow-if">关注我们</li>
+						<li class="follow-it">
+							<a href="#" class="follow-in">IDOL APP</a>
+						</li>
+						<li class="follow-it">
+							<a href="#" class="follow-in" >IDOL TV</a>
+						</li>
+						<li class="follow-it follow-weixin">
+						<a class="follow-in" onmousemove="document.getElementById('follow-code').style.display='block'" onmouseleave="document.getElementById('follow-code').style.display='none'">微信公众号</a>
+							<div class="follow-code" style="display:none" id="follow-code">
+								<img src="imgs/wx-code.png">
+							</div>
+						</li>
+					</ul>
+				</div>
+					
+			</div>
+			<div class="f-nav">
+				<div class="f2-up">
+					<a href="#">关于我们</a>
+					<span>|</span>
+					<a href="#">加入我们</a>
+					<span>|</span>
+					<a href="#">网站地图</a>
+				</div>
+				<div class="f2-down">
+					<p>IDOL为爱豆旗下网站产品</p>
+					<p>© 2013－2019 idol001.com, all rights reserved  <a href="#">粤ICP备12015719号</a></p>
+					<p>广播电视节目制作经营许可证：（粤）字第02065号</p>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<script type="text/javascript">
+	var box = document.getElementById('box');
+	var oNavlist = document.getElementById('lb_nav').children;
+	var slider = document.getElementById('slider');
+	var left = document.getElementById('left');
+	var right = document.getElementById('right');
+	var index = 1;
+	var timer;
+	var isMoving = false;
+	//轮播下一张的函数
+
+//轮播图
+    function next(){
+    	index++;//让右面的出来
+    	navChange();
+    	infoChange();
+        animate(slider,{left:-850*index},function(){
+        	if(index === 6){
+        		slider.style.left = "-850px";//每到最后一张瞬间赋值为下标1，并重新赋值下标为1
+        		index = 1;
+        	}
+        });
+    }
+    function prev(){
+    	index--;//让左面的出来
+    	navChange();
+    	infoChange();
+    	animate(slider,{left:-850*index},function(){
+    		if (index === 0) {
+    			slider.style.left = "-4250px";//5张图
+    			index = 5;//瞬间赋为第五张图 
+    		}
+    	})
+    }
+	var timer = setInterval(next,2000)//外层时间保证比动一次时间长,保证一次运动已经结束了
+	//鼠标划入清定时器
+	box.onmouseover = function(){
+		animate(left,{opacity:50});//箭头淡入淡出
+		animate(right,{opacity:50});
+		clearInterval(timer);//划上去清掉定时器
+	}
+	//鼠标划出开定时器
+	box.onmouseout = function(){
+		animate(left,{opacity:0});
+		animate(right,{opacity:0});
+		timer = setInterval(next,2000);
+	}
+	right.onclick = next;
+	left.onclick = prev;
+
+	 //小按钮点击事件
+	for(var i = 0 ;i<oNavlist.length;i++){
+		oNavlist[i].idx = i;
+		//每个li都是一个dom结点，一个结点就是一个对象，可以绑定属性
+		oNavlist[i].onclick = function(){
+		    index = this.idx + 1 ;//因为前面多着第五张，按钮下标加1
+			navChange();
+			infoChange();
+			animate(slider,{left:-850*index});
+		}
+	}
+	//小按钮背景色切换
+	function navChange(){//之前所有active类名 去掉，然后再给现在的加类名
+		for(var i = 0 ; i<oNavlist.length ; i++){
+			oNavlist[i].className = '' ;
+		}
+		if(index === 6){
+			oNavlist[0].className = 'active';
+		}else if(index === 0){
+			oNavlist[4].className = 'active';
+		}else{
+		    oNavlist[index-1].className = 'active';
+		}
+	}
+	function infoChange(){
+		var info = document.getElementById("info");
+		var Arr = ["     2019今日头条年度盛典", "     朱一龙入围电影频道最具潜力男演员", "     王嘉尔——爱奇艺《变身总动员》" , "     RedVelvet新曲音源排行榜ALL KILL" , "      赖冠霖——同行六载，庆幸相遇"];
+		if(index === 6){
+			info.innerHTML = Arr[0];
+		}else if(index === 0){
+			info.innerHTML = Arr[4];
+		}else{
+		    info.innerHTML = Arr[index-1];
+		}
+	}	
+
+</script>
+
+</body>
+</html>
