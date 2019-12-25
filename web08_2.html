@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>zhuce</title>
+	<style type="text/css">
+		*{
+			padding: 0;
+			margin: 0;
+		}
+		body{
+			background-image: url(web08_2/1.jpg);
+			background-size: cover;
+		}
+		.bigbox{
+			position: absolute;
+			width: 650px;
+			height: 500px;
+			background-color: rgba(255,255,255,0.7);
+			margin-left: 450px;
+			margin-top: 100px	
+		}
+		.box{	
+			width: 300px;
+			height: 400px;
+			padding: 0 20px;
+			margin: 0 auto;
+			background-color: rgba(0,180,164,0.5);		
+			position: relative;
+			top: 50px;
+			left: -5px;	
+		}
+		img{
+			width: 150px;
+			height: 150px;
+		}
+		#pitureleft{
+			position: relative;
+			top: -50px;
+			width: 150px;
+			height: 150px;
+		}
+		#pictureright{
+			position: relative;
+			left: 500px;
+			top: -200px;
+			width: 150px;
+			height: 150px;
+		}
+		#inp1{
+			margin-top: 40px;
+		}
+		.inp{
+			width: 100%;
+			height: 40px;
+			text-indent: 8px;
+			border-radius: 15px;
+			outline: none;
+		}
+		.blank{
+			height: 30px;
+			line-height: 30px;
+			font-size: 12px;
+		}
+		.btn{
+			background: #00b4a3;
+			width: 100%;
+			height: 40px;
+			border: none;
+			margin-top: 8px;
+			color: #fff;
+			border-radius: 3px;
+			outline: none;
+		}
+		a{
+			text-decoration: none;
+			color: gray;
+		}
+		a:hover{
+			color: red;
+		}
+		#left{
+			width: 420px;
+			height: 350px;
+			position: absolute;
+			bottom: 0;
+		}
+		#left>img{
+			width: 420px;
+			height: 350px;
+		}
+	</style>
+</head>
+<body>
+<div class="bigbox">
+	<div class ="box">
+		<input class="inp" id="inp1" type="text" placeholder="用户名" onfocus="Tell1()" onblur="ClearTell1()"
+		onclick="openeye()" autocomplete="off">
+		<p class="blank"></p>
+
+		<input class="inp" type="password" placeholder="密码" onfocus="Tell2()" onblur="ClearTell2()" 
+		onclick="closeeye()" autocomplete="off">
+		<p class="blank"></p>
+
+		<input class="inp" type="password" placeholder="确认密码" onfocus="Tell2()" onblur="ClearTell2()" 
+		onclick="closeeye()" autocomplete="off">
+		<p class="blank"></p>
+
+		<p class="blank"></p>
+		<input type="checkbox" checked>我已同意<a href="#">《网络用户使用协议》</a>
+		<button class="btn" onclick="check(code)">注册</button>
+	</div>
+	<div id="pitureleft">
+		<img src="web08_2/a1.png">
+	</div>
+	<div id="pictureright">
+		<img src="web08_2/a2.png">
+	</div>
+</div>
+<div id="left">
+	<img src="web08_2/11.png" id="leftURL">
+</div>
+	<script type="text/javascript">
+		var left = document.getElementById("left");
+		var leftURL = document.getElementById("leftURL");
+		function play1(imge){
+			var str = leftURL.src;
+			console.log(str);
+			var imge = str.substr(str.length-14,14);
+			console.log(imge);
+			if(imge == 'web08_2/11.png'){
+				leftURL.src='web08_2/12.png';
+			}
+			if (imge == 'web08_2/12.png') {
+				leftURL.src='web08_2/13.png';
+			}
+			if (imge == 'web08_2/13.png') {
+				leftURL.src='web08_2/14.png';
+			}
+			if (imge == 'web08_2/14.png') {
+				leftURL.src='web08_2/11.png';
+			}
+		}
+		function play2(){
+			var img = leftURL.src;
+			play1(img);
+		}
+		timer1 = setInterval(play2,1000);
+		var body = document.body;
+		function play3(imge){
+			var str = getComputedStyle(body).backgroundImage;
+			var imge = str.substr(str.length-15,13);
+			if(imge == 'web08_2/1.jpg'){
+				body.setAttribute("style",'background-image: url("web08_2/2.jpg")');
+			}
+			if (imge == 'web08_2/2.jpg') {
+				body.setAttribute("style","background-image: url('web08_2/3.jpg')");
+			}
+			if (imge == 'web08_2/3.jpg') {
+				body.setAttribute("style","background-image: url('web08_2/1.jpg')");
+			}
+		}
+		function play4(){
+			var img = getComputedStyle(body).backgroundImage;
+			console.log(img);
+			play3(img);
+		}
+		timer2 = setInterval(play4,3000);
+	</script>
+</body>
+</html>

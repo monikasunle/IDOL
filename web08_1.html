@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>denglu</title>
+	<style>
+		*{
+			padding: 0;
+			margin: 0;
+		}
+		body{
+			background-image: url('web08_1/1.jpg');
+			background-size: cover;
+			background-repeat: no-repeat;
+		}
+		.bigbox{
+			position: absolute;
+			width: 1000px;
+			height: 500px;
+			background-color: rgba(255,255,255,0.7);
+			margin-left: 250px;
+			margin-top: 100px	
+		}
+		.box-left{
+			position: relative;
+			left: 0px;
+			width: 300px;
+			height: 400px;
+			padding: 0 20px;
+			margin: 50px 50px;
+			background-color: rgba(0,180,164,0.5);			
+		}
+		.box-right{
+			margin-top: -500px;
+			margin-left: 500px;
+			width: 400px;
+			height: 500px;
+			border-left: 2px solid #00b4a3;
+		}
+		#inp1{
+			margin-top: 40px;
+		}
+		.inp{
+			width: 100%;
+			height: 40px;
+			text-indent: 8px;
+			border-radius: 15px;
+			outline: none;
+		}
+		.tishi1{
+			font-size: 12px;
+
+		}
+		.notice{
+			height: 30px;
+			line-height: 30px;
+			font-size: 12px;
+		}
+
+		.code{
+			width: 60%;
+		}
+		.getCode{
+			width: 35%;
+			height: 44px;
+			float: right;
+			border: none;
+			background-color: #eee;
+			border-radius: 15px;
+		}
+		.codeImg{
+			height: 40px;
+		}
+		.btn{
+			background: #00b4a3;
+			width: 100%;
+			height: 40px;
+			border: none;
+			margin-top: 8px;
+			color: #fff;
+			border-radius: 3px;
+			outline: none;
+		}
+		#rightimg>img{
+			width: 300px;
+			height: 300px;
+			position: relative;
+			top: -200px;
+			left : 100px;
+		}
+		#rightimg{
+			width: 300px;
+			height: 300px;	
+		}
+		#demo1{
+			float: left;
+			bottom: 15px;
+			width: 0px;
+			height: 0px;
+			border:20px solid;
+			margin: 40px;
+			margin-right: 0px;
+			border-right-color: white;
+			border-left-color: transparent;
+			border-top-color: transparent;
+			border-bottom-color: transparent;
+			display: none;
+		}
+		#demo2{
+			float: left;
+			width: 150px;
+			height: 0px;
+			border:60px solid;
+			border-color: white;
+			border-width: 100px;
+			border-radius: 15px;
+			display: none;
+		}
+		#erweima{
+			position: absolute;
+			top: 100px;
+			right: -250px;
+		}
+		#picture>img{
+			width: 150px;
+			height: 150px;
+			
+		}
+		#picture>p{
+			color: #00b4a3;
+		}
+		#picture{
+			position: relative;
+			left: 100px;
+			top: -180px;
+			display: none;
+			width: 310px;
+			height: 200px;
+		}
+		#demo3{
+			float: left;
+			bottom: 15px;
+			width: 0px;
+			height: 0px;
+			border:20px solid;
+			margin: 40px;
+			margin-right: 0px;
+			border-right-color: white;
+			border-left-color: transparent;
+			border-top-color: transparent;
+			border-bottom-color: transparent;
+			display: none;
+		}
+		#demo4{
+			float: left;
+			width: 100px;
+			height: 0px;
+			border:60px solid;
+			border-color: white;
+			border-width: 50px;
+			border-radius: 15px;
+			display: none;
+		}
+		.tishi{
+			position: relative;
+			left: 800px;
+			top: -400px;
+			display: none;
+			width: 300px;
+		}
+		#text{
+			position: relative;
+			left: 150px;
+			top: -100px;
+			width: 60px;
+			height: 100px;
+			color: #00b4a3;
+		}
+		.zhuce{
+			position: relative;
+			left: 100px;
+			top : 130px;
+		}
+		a{
+			text-decoration: none;
+			color: #00b4a3;
+		}
+		a:hover{
+			color: red;
+		}
+	</style>
+</head>
+<body>
+<div class="bigbox">
+	<div class="box-left">
+		<input class="inp" id="inp1" type="text" placeholder="用户名" onfocus="Tell1()" onblur="ClearTell1()"
+		onclick="openeye()" autocomplete="off">
+		<p class="notice"></p>
+
+		<input class="inp" type="password" placeholder="密码" onfocus="Tell2()" onblur="ClearTell2()" 
+		onclick="closeeye()" autocomplete="off">
+		<p class="notice"></p>
+
+		<div>
+			<input class="inp code" type="text" placeholder="验证码" onfocus="Tell3()" onblur="ClearTell3()"
+			onclick="openeye()">
+			<button class="getCode" onclick="GetCode()">获取验证码</button>
+		</div>
+		<div class="codeImg">
+		</div>
+		<p class="notice"></p>
+			<input type="checkbox" checked>请记住我
+			<text class="tishi1">不是自己的电脑不要勾选此项</text>
+		<button class="btn" onclick="check(code)">登录</button>
+	</div>
+	<div class="box-right">
+		<div id="rightimg">
+			<img src="web08_1/buwuyan.png">
+		</div>
+		<div class="zhuce">
+			<p>还没有小马甲吗？快点<a href="#">注册</a>和我一起玩耍吧！</p>
+		</div>
+	</div>
+	<div id="erweima">
+		<div id="demo1"></div>
+		<div id="demo2"></div>
+		<div id="picture">
+			<img src="web08_1/erweima.jpg">
+			<img src="web08_1/erweima.jpg">
+			<p>&emsp;&emsp;&emsp;App下载&emsp;&emsp;&emsp;&emsp;&emsp;微信公众号</p>		
+		</div>	
+	</div>
+	<div class ="tishi">
+		<div id="demo3"></div>
+		<div id="demo4"></div>
+		<div id="text">
+	
+		</div>
+	</div>	
+</div>
+	<script>
+		var demo3 = document.getElementById("demo3");
+		var demo4 = document.getElementById("demo4");
+		var tishi = document.getElementsByClassName("tishi")[0];
+		var text = document.getElementById("text");
+		function Tell1(){
+			demo3.style.display = "block";
+			demo4.style.display = "block";
+			tishi.style.display = "block";
+			text.innerHTML= "请输入4~10位名字哦~";
+		}
+		function ClearTell1(){
+			demo3.style.display = "none";
+			demo4.style.display = "none";
+			tishi.style.display = "none";
+		}
+		function Tell2(){
+			demo3.style.display = "block";
+			demo4.style.display = "block";
+			tishi.style.display = "block";
+			text.innerHTML= "请输入4~12位密码哦~";
+		}
+		function ClearTell2(){
+			demo3.style.display = "none";
+			demo4.style.display = "none";
+			tishi.style.display = "none";
+		}
+		function Tell3(){
+			demo3.style.display = "block";
+			demo4.style.display = "block";
+			tishi.style.display = "block";
+			text.innerHTML= "请输入正确验证码哦~";
+		}
+		function ClearTell3(){
+			demo3.style.display = "none";
+			demo4.style.display = "none";
+			tishi.style.display = "none";
+		}
+		function GetCode(){
+			document.getElementsByClassName("codeImg")[0].innerHTML="";
+			 var img = new Image(); 
+			 var imgList = new Array;
+			imgList[0] = "image/zAZfB.jpg";
+			imgList[1] = "image/ZEhUN.jpg";
+			imgList[2] = "image/zFC9H.jpg";
+			imgList[3] = "image/zhWY9.jpg";
+			imgList[4] = "image/Zin4c.jpg";
+			imgList[5] = "image/ZITGj.jpg";
+			imgList[6] = "image/zJ6iV.jpg";
+			imgList[7] = "image/zjsKP.jpg";
+			imgList[8] = "image/ZKc9S.jpg";
+			imgList[9] = "image/zKDXU.jpg";
+			var imgChoice = parseInt(Math.random()*imgList.length);
+			img.src = imgList[imgChoice];
+			document.getElementsByClassName("codeImg")[0].appendChild(img);
+			console.log(imgList[imgChoice].slice(6,11));
+			code = imgList[imgChoice].slice(6,11);
+		}
+		function check(code){
+			var UserName = document.getElementsByClassName("inp")[0].value;
+			var Password = document.getElementsByClassName("inp")[1].value;
+			var Code = document.getElementsByClassName("inp code")[0].value;
+			console.log(Code);
+			if(UserName.length<4 || UserName.length>11)
+				document.getElementsByClassName("notice")[0].innerHTML="用户名位数不对";
+			if(Password.length<6 || Password.length>12)
+				document.getElementsByClassName("notice")[1].innerHTML= "密码位数不对";
+			if(Code != code)
+				document.getElementsByClassName("notice")[2].innerHTML="验证码错误";
+			if(UserName.length>=4 && UserName.length<=11 && Password.length>=6 && Password.length<=12
+				&& Code==code)
+				alert("登录成功");
+		}
+		var zhuce = document.getElementsByClassName("zhuce")[0];
+		var rightimg = document.getElementById("rightimg");
+		function closeeye(){
+			rightimg.innerHTML = null;
+			var img = document.createElement('img');
+			rightimg.appendChild(img);
+			img.setAttribute("src","web08_1/wuyan.png");
+		}
+		function openeye(){
+			rightimg.innerHTML = null;
+			var img = document.createElement("img");
+			rightimg.appendChild(img);
+			img.setAttribute("src","web08_1/buwuyan.png");
+		}
+		var boxright = document.getElementsByClassName("box-right")[0];
+		var demo1 = document.getElementById("demo1");
+		var demo2 = document.getElementById("demo2");
+		var picture = document.getElementById("picture");
+		var body = document.getElementsByTagName("body")[0];
+		boxright.onmouseover = function(){
+			demo1.style.display = 'block';
+			demo2.style.display = 'block';
+			picture.style.display = 'block';
+		}
+		boxright.onmouseout = function(){
+			demo1.style.display = 'none';
+			demo2.style.display = 'none';
+			picture.style.display = 'none';
+		}		
+		function play1(imge){
+			var str = getComputedStyle(body).backgroundImage;
+			var imge = str.substr(str.length-15,13);
+			if(imge == 'web08_1/1.jpg'){
+				body.setAttribute("style",'background-image: url("web08_1/2.jpg")');
+			}
+			if (imge == 'web08_1/2.jpg') {
+				body.setAttribute("style","background-image: url('web08_1/3.jpg')");
+			}
+			if (imge == 'web08_1/3.jpg') {
+				body.setAttribute("style","background-image: url('web08_1/4.jpg')");
+			}
+			if (imge == 'web08_1/4.jpg') {
+				body.setAttribute("style","background-image: url('web08_1/1.jpg')");
+			}
+		}
+		function play2(){
+			var img = getComputedStyle(body).backgroundImage;
+			play1(img);
+		}
+		var timer = setInterval(play2,3000);
+	</script>
+</body>
+</html>
