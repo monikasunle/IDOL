@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>yibo</title>
+	<meta charset="utf-8">
+	<style type="text/css">
+	*{
+		margin:0;
+		padding: 0;
+	}
+	#box_toplayer{
+		z-index:100px;
+		width:100%;
+		height:100%;
+		position:fixed;
+		left:0;
+		top:0;
+	}
+	#slider{
+		width:25px;
+		height:25px;
+		position:absolute;
+		left:0;
+		top:0;
+		background:transparent;
+		filter:alpha(opacity=40);
+		display: block;
+		cursor: default;
+	}
+	#main{
+		width: 48%;
+		height: 3000px;
+		margin-left: 220px;
+	}
+	.fen_1{
+		position: fixed;
+		width: 100%;
+		height: 80px;
+		background-color: #00b4a3;
+		margin-top: 0;
+	}
+	.p1{
+		display: block;
+		background-color: lightgrey;
+		font-size: 13px;
+		color: grey;
+		width: 300px;
+	}
+	.logo_{
+		padding-left: 200px;
+		padding-top: 10px;
+		display: inline-block;
+	}
+	.lo{
+		padding-left: 300px;
+		display: inline-block;
+	}
+	.fen_1 a{
+		display:inline-block;
+		text-decoration: none;
+		width: 120px;
+		height: 80px;
+		color: white;
+		float: right;
+		padding-right: 10px;
+		padding-top: 27px;
+		font-size: 25px;
+		font-family: "微软雅黑";
+	}
+	.hui{
+		margin-right: 350px;
+	}
+	.art{
+		padding-top: 110px;
+	}
+	.art_p{
+		line-height: 2em;
+	}
+
+	/*工具栏 -回到顶端*/
+	.toolbar{
+		position: fixed;
+		display: block;
+		bottom:150px;
+		right: 150px;
+		color: #454545;
+		font-size: 14px;
+		text-align: left;
+		line-height: 28px;
+		font-family: "Microsoft YaHei", "Arial", "黑体", "宋体", sans-serif;
+	}
+	.toolbar-item-shouye:link ,:visited{
+		background-position: 0 -798px;
+	}
+	.toolbar-item-shouye:hover {
+		background-position: 0 -862px;
+	}
+	.toolbar-item-pinglun:link ,:visited{
+		background-position: 0 -426px;
+	}
+	.toolbar-item-pinglun:hover {
+		background-position: 0 -490px;
+	}
+	.toolbar-item-fenxiang:link ,:visited{
+		background-position: 0 -550px;
+	}
+	.toolbar-item-fenxiang:hover{
+		background-position: 0 -614px;
+	}
+	.toolbar-item-top:link ,:visited{
+		background-position: 0 -674px;
+	}
+	.toolbar-item-top:hover {
+		background-position: 0 -736px;/*高度54px*/
+	}
+
+	a:visited {
+		text-decoration: none;
+	}
+
+	.toolbar-item {
+		display: block;
+		width: 52px;
+		height: 52px;
+		margin-top: 1px;
+		position: relative;
+		transition: background-position 1s;
+	}
+	.toolbar-item{
+		background: url(yb/toolbar.png) no-repeat;
+	}
+
+	.pinglun{
+		height:600px; 
+		width:100%;
+	}
+	ul,li{
+		direction: none;
+	}
+	.pin{
+		padding-top: 80px;
+		height: 50px;
+		line-height: 50px;
+		font-size: 25px;
+		font-weight: 200px;
+		border-bottom: 1px solid #00b4a3;
+	}
+	.ping{
+		display:inline-block;/* block;*/
+		height: 150px;
+		line-height: 50px;
+		border-bottom: 1px dashed #00b4a3;
+		color: black;
+		font-size: 18px;
+	}
+	.ping img{
+		height: 50px;
+		width: 50px;
+		float: left;
+		padding-top: 30px;
+		padding-left: 10px;
+	}
+	.name{
+		margin-top: 30px;
+		display: inline-block;
+		padding-left: 30px;
+		font-size: 15px;
+	}
+	.pi{
+		display: inline-block;
+		width: 400px;
+		padding-left: 90px;
+		padding-top: 5px;
+	}
+	.ping span{/*右部评论时间*/
+		display: block;
+		float: right;
+		padding-bottom: 50px;
+		font-size: 15px;
+	}
+	li {
+		list-style: none;
+	}
+    </style>
+</head>
+<body>
+	<!-- 固定部分  鼠标跟随图片 -->
+
+	<div id="box_toplayer">
+		<div id="slider"><img src="yb/heart11.png" width="25" height="25"></div>
+	</div>
+
+	<!-- 固定，回到顶部 -->
+	<div class="toolbar">
+		<a href="index.html" class="toolbar-item toolbar-item-shouye"></a>
+		<a href="#pinglun" class="toolbar-item toolbar-item-pinglun"></a>
+		<a href="#" class="toolbar-item toolbar-item-fenxiang"></a>
+		<a href="javascript:scroll(0,0)" id="top" class="toolbar-item toolbar-item-top"></a>
+	</div>
+
+	<!-- 导航栏——1 -->
+	<div class="fen_1">
+		<img class="logo_" src="yb/logo0_.jpg">
+		<a href="web08_1.html" >注册</a>
+		<a href="web08_2.html">登录</a>
+		<a href="idol.html" class="hui">活动汇</a>
+		<a href="index.html" class="shou">首页</a> </div>
+	<div id="main">
+		<article class="art">
+			<h1 class="art_p">[王一博][新闻]191223 网易云音乐2019年度音乐榜单出炉 &nbsp&nbsp 王一博拿下2019“年度超级偶像称号”</h1>		
+		<p>&nbsp</p>
+			<p class="p1">2019-12-23 15:57:18 来源：微博 2828次阅读</p>
+			<p>&nbsp</p>
+			<img src="yb/wy.jpg">
+			<p class="art_p">&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp网易云音乐2019年度音乐榜单人气类投票通过15天的角逐，评选出了25个人气奖项，王一博以断层800多万的票数拿下来了2019“年度超级偶像”的荣誉称号！不愧是你，不愧是猫头！</p><p>&nbsp</p>
+			<p class="art_p">&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp努力付出过后就是收获果实的时候啦，每个奖项的最高得票者都将作为网易云音乐2019年度音乐榜单的人气奖进行展出，敬请期待~</p>
+			<p>&nbsp</p>
+			<img src="yb/wyb.png">
+			<img src="yb/bangdan.jpg">
+		</article>
+		<div class="pinglun"  id="pinglun">
+			<div class="pin"> 3评论 </div>
+                    <div class="ping">
+                    	<span>2019-12-15</span>
+                    	<img src="yb/tou1.jpg">
+                    	<p class="name">酷盖的守护星9801</p>
+                        <p class="pi">欧耶  恭喜恭喜</p>
+                    </div>
+                    <div class="ping">
+                    	<span>2019-10-15</span>
+                    	<img src="yb/tou2.jpg">
+                    	<p class="name">执着的阿令</p>                       
+                    	<p class="pi">恭喜酷盖小王子</p>
+                    </div>
+                    <div class="ping">
+                    	<span>2019-05-15</span>
+                    	<img src="yb/tou3.jpg">
+                        <p class="name">水果梨</p>
+                        <p class="pi">恭喜一博</p>
+                    </div>
+                </ul>
+		</div>
+	</div>
+	<script>
+		var slider = document.getElementById('slider');
+		var box = document.getElementById('box_toplayer');
+		var top_width = screen.width;
+		var top_height = screen.height;
+		box.onmousemove = function(ev){
+			var ol = ev.clientX-21;
+			var ot = ev.clientY-21;
+			ol = ol>top_width?top_width:ol<0?0:ol;
+            ot = ot>top_height?top_height:ot<0?0:ot;//先比较与150关系，如果不大于150则比较与0关系
+            slider.style.left = ol + 'px';
+            slider.style.top = ot + 'px';
+        }
+    </script>
+
+</body>
+</html>
